@@ -1,0 +1,22 @@
+#graficas h1 {
+    font-size: 30px; 
+    margin-top: 90px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: aliceblue;
+    background-color: #0000006a;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#plot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    border-color: #000;
+    border: 50px;
+    width: 100%;
+    margin-bottom: 6px;
+    
+  }
+  
+  

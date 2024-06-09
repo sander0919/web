@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/styles/style.css">
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="icon" href="/assets/icons/planta.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-8oPFk+m1IwNDhI4sU4D50H5nLg4h/7biOnF6xhBMVr/bD7ZtgjBeB+soq36j6HsSi7VCMzfljqFCXaWj7wopow=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
+  <title>PlantaFriendly</title>
+</head>
+
+<body>
+  <main>
+    <nav class="navbar navbar-expand-lg" id="custom-navbar">
+      <div class="container-fluid">
+        <img src="assets/icons/planta.png" alt="" style="height: 3.3rem;">
+        <a class="navbar-brand" href="index.html" style="color: rgb(9, 73, 9);">PlantaFriendly</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/index.html#nosotros">Sobre Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/index.html#tutoriales">Tutoriales</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/catalogo.html">Catálogo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/contacto.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/dasboardDatos.html">Estadísticas</a>
+            </li>
+          </ul>
+        </div>
+        <div class="navbar-nav">
+         <a href="/pages/loginRegister.html" style="text-decoration: none;"> <button class="nav-button" id="btnIniciar" h>Iniciar Sesión</button></a>
+          <button class="nav-buttonC" style="display: none;" id="btnCerrar">Cerrar sesion</button>
+        </div>
+        
+        <div id="iconoCarrito">
+          <a href="./pages/carrito.html" style="text-decoration: none;">
+            <img src="assets/icons/carrito-de-compras.png" id="carr" alt="Carrito de compras" class="carrito-icon">
+            <span id="numerito" class="numerito">0</span>
+        </a>
+          
+        </div>
+      </div>
+    </nav>
+    <script>
+      window.onload = function() {
+          mostrarBotonCerrarSesion();
+      };
+  
+      // Función para mostrar u ocultar el botón de cerrar sesión
+      function mostrarBotonCerrarSesion() {
+          const sesion = localStorage.getItem('sesion');
+          const btnCerrarSesion = document.getElementById('btnCerrar');
+          const btnInicioSesion = document.getElementById('btnIniciar');
+  
+          if (sesion) {
+              btnCerrarSesion.style.display = 'block'; // Mostrar el botón de cerrar sesión
+              btnInicioSesion.style.display = 'none'; // Ocultar el botón de inicio de sesión
+          } else {
+              btnCerrarSesion.style.display = 'none'; // Ocultar el botón de cerrar sesión
+              btnInicioSesion.style.display = 'block'; // Mostrar el botón de inicio de sesión
+          }
+      }
+  
+      // Evento click del botón de cerrar sesión
+      document.getElementById('btnCerrar').addEventListener('click', function() {
+          // Utilizar Toastify para mostrar una ventana de confirmación personalizada
+          
+                  Toastify({
+                      text: 'Sesión cerrada. ¡Vuelva pronto!', // Mensaje de confirmación
+                      duration: 3000, 
+                      gravity: 'top', 
+                      position: 'center', 
+                      backgroundColor: 'linear-gradient(to right, #FFCC00, #FF6666)',
+                      stopOnFocus: true 
+                  }).showToast();
+                  // Eliminar la sesión almacenada y actualizar la visualización de los botones de inicio y cierre de sesión
+                  localStorage.removeItem('sesion');
+                  mostrarBotonCerrarSesion();
+              }).showToast();
+  </script>
+    <!--Seccion de carrusel-->
+    <section>
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+            aria-label="Slide 4"></button>
+        </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="5000">
+            <img src="assets/img/carrusel.jpeg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h1>Un mundo más verde</h1>
+              <h5>¡Cuidar de nuestro planeta es construir un futuro mejor para todos!</h5>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="assets/img/carrusel2.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h1>Belleza natural</h1>
+              <h5>Descubre la magia de la naturaleza y aprende a protegerla.</h5>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="assets/img/carrusel3.jpeg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h1>Conciencia y armonía</h1>
+              <h5>¡Cada pequeño gesto cuenta! Juntos podemos hacer la diferencia!</h5>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="assets/img/carrusel4.jpeg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h1>Un futuro brillante</h1>
+              <h5>¡Imagina un mundo donde la naturaleza florezca y todos vivamos en armonía con ella!</h5>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+    <!--Seccion sobre nosotros con la informacion de la empresa-->
+    <section class="sobre-nosotros" id="nosotros">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="foto-grupal">
+              <img src="assets/img/fotogrupal.jpg" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="texto">
+              <h2>Sobre nosotros</h2>
+              <p>
+                En PlantaFriendly, nuestra pasión por la naturaleza y la jardinería nos llevó a crear un espacio donde
+                los amantes de las plantas puedan encontrar todo lo que necesitan para cultivar su propio paraíso verde.
+                La idea de PlantaFriendly surgió de la necesidad de ofrecer a nuestra comunidad productos de calidad y
+                asesoramiento experto en un ambiente acogedor y amigable.
+              </p>
+              <p>frecemos una amplia gama de productos y servicios para satisfacer todas tus
+                necesidades de jardinería. Desde semillas y plantas hasta herramientas de jardinería y consultoría
+                experta, tenemos todo lo que necesitas para crear y mantener un jardín hermoso y saludable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!--Seccion de eventos-->
+    <div class="content-tutoriales">
+    <section class="eventos" id="tutoriales">
+      <div class="container-fluid">
+        <div class="row justify-content-center mb-3">
+          <div class="col-12 content-head">
+            <div class="mbr-section-head">
+              <h4 class="title-tutorial">
+                Tutoriales
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="item features-image col-12 col-md-6 col-lg-3 active">
+            <div class="item-wrapper">
+              <div class="item-img mb-3">
+                <iframe width="270" height="215" src="https://www.youtube.com/embed/80d-meEkY90?si=e29M8zyx7neyF4wJ"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+              </div>
+              <div class="item-content align-left">
+                <div class="item-content align-left">
+                  <h6 class="item-subtitle mbr-fonts-style mb-3 display-6">
+                    <strong><a class="text-black fw-bold" href="#">¿No sabes por donde empezar?</a></strong>
+                  </h6>
+                  <p class="mbr-text mbr-fonts-style mb-3 display-7">Consejos para Principiantes</p>
+                  <p class="mbr-text mbr-fonts-style mb-3 display-7"> 9 consejos de jardinería para principiantes, con
+                    estos tips sabrás un poco más de por donde empezar si no sabes nada sobre plantas y quieres comenzar
+                    a
+                    tener plantas o un jardín.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item features-image col-12 col-md-6 col-lg-3">
+            <div class="item-wrapper">
+              <div class="item-img mb-3">
+                <iframe width="270" height="215" src="https://www.youtube.com/embed/H1Yg4FiSk4c?si=YfCLOmpv-q01FREN"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+              </div>
+              <div class="item-content align-left">
+                <h6 class="item-subtitle mbr-fonts-style mb-3 display-6">
+                  <strong><a class="text-black fw-bold" href="#">Trucos de Jardinería</a></strong>
+                </h6>
+                <p class="mbr-text mbr-fonts-style mb-3 display-7">Tips para que tus plantas crezcan sanas</p>
+                <p class="mbr-text mbr-fonts-style mb-3 display-7">Si te gustan las flores, las suculentas o un huerto
+                  de verduras, hoy te enseñaré algunos consejos de jardineria y de huerto urbano para que tus plantas
+                  crezcan verdes, sin plagas y de manera saludable. </p>
+              </div>
+            </div>
+          </div>
+          <div class="item features-image col-12 col-md-6 col-lg-3">
+            <div class="item-wrapper">
+              <div class="item-img mb-3">
+                <iframe width="270" height="215" src="https://www.youtube.com/embed/eST9seSW2xs?si=40aan-gXckz0-oU9"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+              </div>
+              <div class="item-content align-left">
+                <h6 class="item-subtitle mbr-fonts-style mt-0 mb-3 display-6">
+                  <strong><a class="text-black fw-bold" href="#">Diseña tu jardin</a></strong>
+                </h6>
+                <p class="mbr-text mbr-fonts-style mb-3 display-7">Ideas para diseñar tu Jardin</p>
+                <p class="mbr-text mbr-fonts-style mb-3 display-7">Si no sabes cómo diseñar tu jardín, aquí te mostramos
+                  algunas ideas y consejos para crear un espacio hermoso y funcional en tu hogar. Descubre cómo
+                  seleccionar plantas, distribuir espacios y crear un ambiente armonioso que te invite a disfrutar al
+                  aire libre.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+    <!--Seccion de equipo (Integrantes)-->
+    <section class="equipo">
+      <h3 class="mbr-section-title mbr-fonts-style align-center display-7">Nuestro equipo</h3>
+      <ul class="equipo-lista">
+        <li>
+          <div class="miembro-info">
+            <a href="https://github.com/karolroo" target="_blank"><img src="assets/icons/github.png" alt="GitHub"></a>
+            <h4 class="mbr-section-title mbr-fonts-style align-center display-7">Karol Rojas</h4>
+          </div>
+        </li>
+        <li>
+          <div class="miembro-info">
+            <a href="https://github.com/Stefigm99" target="_blank"><img src="assets/icons/github.png" alt="GitHub"></a>
+            <h4 class="mbr-section-title mbr-fonts-style align-center display-7">Stefany Gasca</h4>
+          </div>
+        </li>
+        <li>
+          <div class="miembro-info">
+            <a href="https://github.com/sander0919" target="_blank"><img src="assets/icons/github.png" alt="GitHub"></a>
+            <h4 class="mbr-section-title mbr-fonts-style align-center display-7">Alexander Loaiza</h4>
+          </div>
+        </li>
+        <li>
+          <div class="miembro-info">
+            <a href="https://github.com/Laura1057" target="_blank"><img src="assets/icons/github.png" alt="GitHub"></a>
+            <h4 class="mbr-section-title mbr-fonts-style align-center display-7">Laura Sofia Henao</h4>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <div class="whatsapp-icon">
+      <a href="https://api.whatsapp.com/send?phone=573045618298" target="_blank">
+        <img src="assets/icons/whatsapp.png" alt="Icono de WhatsApp">
+      </a>
+    </div>
+  </main>
+    <footer>
+      <div class="container">
+        <div class="logo">
+          <img src="assets/icons/planta.png" alt="Logo de la Tienda de Jardinería">
+          <a class="navbar-brand" href="index.html"
+            style="color: rgb(255, 255, 255); font-size: 30px;">PlantaFriendly</a>
+        </div>
+        <div class="contact-info">
+          <h4>Contacto</h4>
+          <p><img src="assets/icons/direccion.png" style="height: 1.2rem; margin-right: 2px;" alt="Icono de dirección">
+            Dirección: Medellín, Colombia</p>
+          <p><img src="assets/icons/telefono.png" style="height: 1.1rem; margin-right: 4px;"
+              alt="Icono de teléfono">Teléfono: <a href="tel:123-456-789">123-456-789</a></p>
+          <p><img src="assets/icons/correo-electronico.png" style="height: 1rem; margin-right: 4px;"
+              alt="Icono de correo electrónico">Correo electrónico: <a href="mailto:info@plantafriendly.com"
+              >info@plantafriendly.com</a>
+          </p>
+          <p><img src="assets/icons/calendario.png" style="height: 1rem; margin-right: 4px;"
+              alt="Icono de horario">Horario de atención: Lunes a Viernes de 9am a 6pm</p>
+        </div>
+        <div class="quick-links">
+          <h4>Enlaces rápidos</h4>
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="pages/catalogo.html">Productos</a></li>
+            <li><a href="#tutoriales">Tutoriales</a></li>
+            <li><a href="/pages/contacto.html">Contacto</a></li>
+            <li><a href="/pages/dasboardDatos.html">Estadísticas</a></li>
+
+          </ul>
+        </div>
+        <div class="redes-lista">
+          <h4>Síguenos en redes sociales</h4>
+          <ul>
+            <li><a href="https://www.facebook.com/jardinlovers/" target="_blank"><img src="assets/icons/facebook.png" alt="Facebook"></a>
+            </li>
+            <li><a href="https://twitter.com/eljardinencasa?lang=es" target="_blank"><img src="assets/icons/twitter.png" alt="Twitter"></a>
+            </li>
+            <li><a href="https://www.instagram.com/jardin.lovers/" target="_blank"><img src="assets/icons/instagram.png"
+                  alt="Instagram"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2024 PlantaFriendly. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="/js/main.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="./js/catalogo.js"></script>
+<script src="./js/menu.js"></script>
+<script src="/js/login.js"></script>
+
+
+</body>
+
+</html>

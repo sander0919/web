@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/styles/style.css">
+  <link rel="stylesheet" href="/assets/styles/dashboard.css">
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="icon" href="/assets/icons/planta.png" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <title>Catálogo</title>
+</head>
+
+<body background="/assets/img/fondo.jpg" style="background-size: cover; background-repeat: no-repeat;">
+  <main>
+    <nav class="navbar navbar-expand-lg" id="custom-navbar">
+      <div class="container-fluid">
+        <img src="/assets/icons/planta.png" alt="" style="height: 3.3rem;">
+        <a class="navbar-brand" href="/index.html" style="color: rgb(9, 73, 9);">PlantaFriendly</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/index.html#nosotros">Sobre Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/index.html#tutoriales">Tutoriales</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Catálogo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/contacto.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pages/dasboardDatos.html">Estadísticas</a>
+            </li>
+          </ul>
+        </div>
+        <div class="navbar-nav">
+          <a href="/pages/loginRegister.html" style="text-decoration: none;"> <button class="nav-button" id="btnIniciar">Iniciar Sesión</button></a>
+          <button class="nav-buttonC" style="display: none;" id="btnCerrar">Cerrar sesion</button>
+        </div>
+        <div id="iconoCarrito">
+          <a href="/pages/carrito.html" style="text-decoration: none;">
+            <img src="/assets/icons/carrito-de-compras.png" id="carr" alt="Carrito de compras" class="carrito-icon">
+            <span id="numerito" class="numerito">0</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <script>
+      window.onload = function() {
+          mostrarBotonCerrarSesion();
+      };
+  
+      // Función para mostrar u ocultar el botón de cerrar sesión
+      function mostrarBotonCerrarSesion() {
+          const sesion = localStorage.getItem('sesion');
+          const btnCerrarSesion = document.getElementById('btnCerrar');
+          const btnInicioSesion = document.getElementById('btnIniciar');
+  
+          if (sesion) {
+              btnCerrarSesion.style.display = 'block'; // Mostrar el botón de cerrar sesión
+              btnInicioSesion.style.display = 'none'; // Ocultar el botón de inicio de sesión
+          } else {
+              btnCerrarSesion.style.display = 'none'; // Ocultar el botón de cerrar sesión
+              btnInicioSesion.style.display = 'block'; // Mostrar el botón de inicio de sesión
+          }
+      }
+  
+      // Evento click del botón de cerrar sesión
+      document.getElementById('btnCerrar').addEventListener('click', function() {
+          // Utilizar Toastify para mostrar una ventana de confirmación personalizada
+          
+                  Toastify({
+                      text: 'Sesión cerrada. ¡Vuelva pronto!', // Mensaje de confirmación
+                      duration: 3000, 
+                      gravity: 'top', 
+                      position: 'center', 
+                      backgroundColor: 'linear-gradient(to right, #FFCC00, #FF6666)',
+                      stopOnFocus: true 
+                  }).showToast();
+                  // Eliminar la sesión almacenada y actualizar la visualización de los botones de inicio y cierre de sesión
+                  localStorage.removeItem('sesion');
+                  mostrarBotonCerrarSesion();
+              }).showToast();
+  </script>
+    <div class="content-catalogo" id="catalogo">   
+      <section class="catalogo">
+          <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
+          <div id="contenedor-productos" class="contenedor-productos">
+          
+        </section>
+      </div>
+      <div class="whatsapp-icon">
+        <a href="https://api.whatsapp.com/send?phone=573045618298" target="_blank">
+          <img src="/assets/icons/whatsapp.png" alt="Icono de WhatsApp">
+        </a>
+      </div>
+    </main>
+    <footer style="background-color:  #fffefe; color: #316331; ">
+        <div class="container">
+          <div class="logo">
+            <img src="/assets/icons/planta.png" alt="Logo de la Tienda de Jardinería">
+            <a class="navbar-brand" href="index.html"
+              style="color: #316331; font-size: 26px;">PlantaFriendly</a>
+          </div>
+          <div class="contact-info">
+            <h4>Contacto</h4>
+            <p><img src="/assets/icons/direccion.png" style="height: 1.2rem; margin-right: 2px;" alt="Icono de dirección">
+              Dirección: Medellín, Colombia</p>
+            <p><img src="/assets/icons/telefono.png" style="height: 1.1rem; margin-right: 4px;"
+                alt="Icono de teléfono">Teléfono: <a href="tel:123-456-789" style="color: #316331;">123-456-789</a></p>
+            <p><img src="/assets/icons/correo-electronico.png" style="height: 1rem; margin-right: 4px;"
+                alt="Icono de correo electrónico">Correo electrónico: <a href="mailto:info@plantafriendly.com"
+                style="color: #316331;">info@plantafriendly.com</a>
+            </p>
+            <p><img src="/assets/icons/calendario.png" style="height: 1rem; margin-right: 4px;"
+                alt="Icono de horario">Horario de atención: Lunes a Viernes de 9am a 6pm</p>
+          </div>
+          <div class="quick-links" style="text-decoration: none;">
+            <h4>Enlaces rápidos</h4>
+            <ul>
+              <li><a href="/index.html" style="color: #316331;">Inicio</a></li>
+              <li><a href="/index.html#catalogo" style="color: #316331;">Productos</a></li>
+              <li><a href="/index.html#tutoriales" style="color: #316331;">Tutoriales</a></li>
+              <li><a href="/pages/contacto.html" style="color: #316331;">Contacto</a></li>
+              <li><a href="/pages/dasboardDatos.html" style="color: #316331;">Estadísticas</a></li>
+            </ul>
+          </div>
+          <div class="redes-lista">
+            <h4>Síguenos en redes sociales</h4>
+            <ul>
+              <li><a href="https://www.facebook.com/jardinlovers/" target="_blank"><img src="/assets/icons/facebook.png" alt="Facebook"></a>
+              </li>
+              <li><a href="https://twitter.com/eljardinencasa?lang=es" target="_blank"><img src="/assets/icons/twitter.png" alt="Twitter"></a>
+              </li>
+              <li><a href="https://www.instagram.com/jardin.lovers/" target="_blank"><img src="/assets/icons/instagram.png"
+                    alt="Instagram"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© 2024 PlantaFriendly. Todos los derechos reservados.</p>
+        </div>
+      </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+  <script src="/js/main.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="/js/catalogo.js"></script>
+    <script src="/js/menu.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/carrito.js"></script>
+  </body>
+  
+  </html>
